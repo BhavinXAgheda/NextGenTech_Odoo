@@ -1,38 +1,169 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App h1 {
+  color: var(--primary-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Navigation Bar */
+.main-nav {
+  background-color: var(--surface-color);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2rem;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-nav a {
+  margin-right: 1.5rem;
+  text-decoration: none;
+  color: var(--text-light-color);
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--primary-color);
+}
+
+/* Page & Form Containers */
+.page-container {
+  background-color: var(--surface-color);
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  text-align: left;
+}
+
+.page-container h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-light-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-sizing: border-box; /* Important for padding and width */
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #357abd; /* A darker shade of the primary color */
+}
+
+/* Logout Button */
+.logout-button {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-light-color);
+  padding: 0.5rem 1rem;
+  width: auto;
+  font-weight: 500;
+  z-index: 1001; /* Ensure it's above the nav bar */
+}
+.logout-button:hover {
+  background-color: var(--background-color);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  z-index: 1000;
 }
 
-.App-link {
-  color: #61dafb;
+.modal-content {
+  background: var(--surface-color);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 500px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #aaa;
+  width: auto;
+  padding: 0;
+}
+
+/* Spinner for Loading States */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: var(--primary-color);
+  animation: spin 1s ease infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Notification for Errors */
+.notification {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+.notification-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }
